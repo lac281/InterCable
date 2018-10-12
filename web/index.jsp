@@ -64,7 +64,7 @@
 <html>
 <head>
 <meta http-equiv="refresh" content="0;url=pages/index.jsp">
-<title>Valle Dorado</title>
+<title>InterCable</title>
 <script language="javascript">
     window.location.href = "Dashboard/pages/login.jsp"
 </script>
