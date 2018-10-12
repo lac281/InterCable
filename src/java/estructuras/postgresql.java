@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class postgresql {
     
-    public void Connect() throws SQLException{
-        
+    //public void Connect() throws SQLException{
+    public static void main(String[] args)  {    
         
         String ip_server = "162.243.12.226";
         String puerto_server = "5432";
@@ -30,11 +30,10 @@ public class postgresql {
         try { 
             Class.forName("org.postgresql.Driver");
              conn = DriverManager.getConnection(str_conn, usuario, password);
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al conectarse en la base de Datos: " + ex);
         }
-        System.out.println("La conexion se realizó sin problemas!");
-       
+        System.out.println("La conexion se realizó sin problemas!");  
        
     }
 }
