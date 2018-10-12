@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">InterCable</a>
+                <a class="navbar-brand" href="main.jsp">InterCable</a>
             </div>
             <!-- /.navbar-header -->
 
