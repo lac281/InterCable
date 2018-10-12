@@ -24,17 +24,16 @@ public class postgresql {
         String usuario = "postgres";
         String password = "Holamund0";
 
-
+        Connection conn = null;
         String str_conn = "jdbc:postgresql://"+ ip_server + ":" + puerto_server + "/" + db_server;
 
         try { 
             Class.forName("org.postgresql.Driver");
+             conn = DriverManager.getConnection(str_conn, usuario, password);
         } catch (ClassNotFoundException ex) {
             System.out.println("Error al conectarse en la base de Datos: " + ex);
         }
-        Connection conn = null;
-        conn = DriverManager.getConnection(str_conn, usuario, password);
-                     
         
+       
     }
 }
