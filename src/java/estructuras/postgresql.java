@@ -15,9 +15,8 @@ import java.sql.SQLException;
  */
 public class postgresql {
     
-    //public void Connect() throws SQLException{
-    public static void main(String[] args)  {    
-        
+    public void Connect() throws SQLException{
+            
         String ip_server = "162.243.12.226";
         String puerto_server = "5432";
         String db_server = "postgres";
@@ -33,7 +32,7 @@ public class postgresql {
         } catch (Exception ex) {
             System.out.println("Error al conectarse en la base de Datos: " + ex);
         }
-        System.out.println("La conexion se realizó sin problemas!");  
+        //System.out.println("La conexion se realizó sin problemas!");  
        
     }
 }
