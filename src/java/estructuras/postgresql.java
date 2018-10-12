@@ -33,7 +33,8 @@ public class postgresql {
         } catch (ClassNotFoundException ex) {
             System.out.println("Error al conectarse en la base de Datos: " + ex);
         }
-        
+        System.out.println("La conexion se realizó sin problemas!");
+       
        
     }
 }
