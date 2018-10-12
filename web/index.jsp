@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!-- html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css"/>
@@ -58,4 +58,19 @@
         }
     </script>
     
+</html-->
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;url=pages/index.jsp">
+<title>Valle Dorado</title>
+<script language="javascript">
+    window.location.href = "Dashboard/pages/login.jsp"
+</script>
+</head>
+<body>
+Go to <a href="Dashboard/pages/login.jsp">Login</a>
+</body>
 </html>
+
