@@ -7,8 +7,10 @@ package Controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static java.lang.System.out;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class validacionusuario extends HttpServlet {
 
-        private ServletOutputStream resp;
+        //private ServletOutputStream resp;
         
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +36,24 @@ public class validacionusuario extends HttpServlet {
             throws ServletException, IOException {
             
             String user = request.getParameter("usuario");
-            String pass = request.getParameter("contrasena");
-            resp = response.getOutputStream();
+            String pass = request.getParameter("password");
+           // resp = response.getOutputStream();
             if(user.equals("")|| pass.equals("")){
-                resp.print("ERROR Todos los campos deben ser ingresados");
+                //resp.print("ERROR Todos los campos deben ser ingresados");
+                out.println("<script>");
+                out.println("alert(ERROR Todos los campos deben ser ingresados)");
+                out.println("</script>");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                
             }else{
-                resp.print("Bienvenido de nuevo " + user + " !" );
+                //resp.print("Bienvenido de nuevo " + user + " !" );
+                out.println("<script>");
+                out.println("alert('Bienvenido" + user + "!')");
+                out.println("</script>");
+                request.getRequestDispatcher("Dashboard/pages/main.jsp").forward(request, response);
+                
             }
+            
             
     }
 
@@ -71,6 +84,8 @@ public class validacionusuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+            
+            
     }
 
     /**

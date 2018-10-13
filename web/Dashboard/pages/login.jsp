@@ -50,7 +50,7 @@
                         <h3 class="panel-title"><img src="" alt=""></h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form method="POST" action="../../valida.do" >
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Usuario" name="usuario" type="text" id="usuario" autofocus >
@@ -59,7 +59,7 @@
                                     <input class="form-control" placeholder="Password" name="password" id="password" type="password">
                                 </div>
                                 
-                                <a href="#" class="btn btn-lg btn-success btn-block" onclick="valida()">Aceptar</a>
+                                <button class="btn btn-lg btn-success btn-block"  >Aceptar</button>
                             </fieldset>
                         </form>
                     </div>
@@ -79,24 +79,25 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    
+    <script src="../../js/jquery-3.3.1.min.js" type="text/javascript"></script>
      
     <script>
         function valida(){
-            var pass = document.getElementById('password').value;
-            var user = document.getElementById('usuario').value;
-            $.ajax({
-               url: 'valida.do',
-               type: 'POST',
-               data: { usuario: user, contrasena: pass },
-               success: function (data){
+            var pass = $('#password').val();
+            var user = $('#usuario').val();
+            $.post('../../valida.do',{ 
+               usuario: user, 
+               password: pass 
+           },function (data){
                    alert(data);
-                   if(data.indexOf('ERROR')){
-                       window.location.href = 'main.jsp';
-                   }else{
-                       window.location.href = 'index.jsp';
-                   }
-               }
+//                   if(data.indexOf('ERROR')){
+//                       window.location.href = 'main.jsp';
+//                   }else{
+//                       window.location.href = 'index.jsp';
+//                   }
             });
+        //alert(user);
             
         }
     </script>
