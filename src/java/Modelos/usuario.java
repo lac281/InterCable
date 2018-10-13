@@ -10,12 +10,17 @@ package Modelos;
  * @author it
  */
 public class usuario {
+    
     private int idusuario;
     private String usuario;
     private String contrasena;
     private int tipo_usuario;
     private int idempleado;
     private int status_usuario;
+
+    public usuario() {
+    }
+       
 
     public usuario(int idusuario, String usuario, String contrasena, int tipo_usuario, int idempleado, int status_usuario) {
         this.idusuario = idusuario;
@@ -73,6 +78,8 @@ public class usuario {
     public void setStatus_usuario(int status_usuario) {
         this.status_usuario = status_usuario;
     }
+
+    
     
     
 }

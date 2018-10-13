@@ -15,14 +15,14 @@ import java.sql.SQLException;
  */
 public class postgresql {
     
+    private String ip_server = "162.243.12.226";
+    private String puerto_server = "5432";
+    private String db_server = "postgres";
+    private String usuario = "postgres";
+    private String password = "Holamund0";
+    
     public Connection getConexion(){
             
-        String ip_server = "162.243.12.226";
-        String puerto_server = "5432";
-        String db_server = "postgres";
-        String usuario = "postgres";
-        String password = "Holamund0";
-
         Connection conn = null;
         String str_conn = "jdbc:postgresql://"+ ip_server + ":" + puerto_server + "/" + db_server;
 
