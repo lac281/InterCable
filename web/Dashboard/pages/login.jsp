@@ -53,10 +53,10 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usuario" name="usuario" type="text" autofocus >
+                                    <input class="form-control" placeholder="Usuario" name="usuario" type="text" id="usuario" autofocus >
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password">
+                                    <input class="form-control" placeholder="Password" name="password" id="password" type="password">
                                 </div>
                                 
                                 <a href="#" class="btn btn-lg btn-success btn-block" onclick="valida()">Aceptar</a>
@@ -82,7 +82,22 @@
      
     <script>
         function valida(){
-            window.location.href = 'main.jsp';
+            var pass = document.getElementById('password').value;
+            var user = document.getElementById('usuario').value;
+            $.ajax({
+               url: 'valida.do',
+               type: 'POST',
+               data: { usuario: user, contrasena: pass },
+               success: function (data){
+                   alert(data);
+                   if(data.indexOf('ERROR')){
+                       window.location.href = 'main.jsp';
+                   }else{
+                       window.location.href = 'index.jsp';
+                   }
+               }
+            });
+            
         }
     </script>
 </body>
