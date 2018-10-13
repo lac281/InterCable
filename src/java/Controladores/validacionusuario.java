@@ -39,7 +39,7 @@ public class validacionusuario extends HttpServlet {
             if(user.equals("")|| pass.equals("")){
                 resp.print("ERROR Todos los campos deben ser ingresados");
             }else{
-                resp.print("Bienvenido " + user + ", tenga un buen dia");
+                resp.print("Bienvenido de nuevo " + user + " !" );
             }
             
     }
