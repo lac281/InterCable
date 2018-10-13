@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 12/10/2018, 12:44:29 PM
-    Author     : Informatica Valle
+    Author     : Innosoft Solutions
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : main.jsp
     Created on : 12/10/2018, 12:45:58 PM
-    Author     : Informatica Valle
+    Author     : InnosoftSolutions
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
