@@ -8,6 +8,7 @@ package Controladores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class validacionusuario extends HttpServlet {
 
+        private ServletOutputStream resp;
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,7 +35,12 @@ public class validacionusuario extends HttpServlet {
             
             String user = request.getParameter("usuario");
             String pass = request.getParameter("contrasena");
-            
+            resp = response.getOutputStream();
+            if(user.equals("")|| pass.equals("")){
+                resp.print("ERROR Todos los campos deben ser ingresados");
+            }else{
+                resp.print("Bienvenido " + user + ", tenga un buen dia");
+            }
             
     }
 
