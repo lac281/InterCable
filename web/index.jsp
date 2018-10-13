@@ -66,11 +66,11 @@
 <meta http-equiv="refresh" content="0;url=pages/index.jsp">
 <title>InterCable</title>
 <script language="javascript">
-    window.location.href = "Dashboard/pages/login.jsp"
+    window.location.href = "login.jsp"
 </script>
 </head>
 <body>
-Go to <a href="Dashboard/pages/login.jsp">Login</a>
+Go to <a href="login.jsp">Login</a>
 </body>
 </html>
 

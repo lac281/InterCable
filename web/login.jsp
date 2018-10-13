@@ -19,16 +19,16 @@
     <title>InterCable</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="Dashboard/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="Dashboard/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="Dashboard/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,7 +50,7 @@
                         <h3 class="panel-title"><img src="" alt=""></h3>
                     </div>
                     <div class="panel-body">
-                        <form method="POST" action="../../valida.do" >
+                        <form id="formlogin" method="POST" action="">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Usuario" name="usuario" type="text" id="usuario" autofocus >
@@ -59,7 +59,7 @@
                                     <input class="form-control" placeholder="Password" name="password" id="password" type="password">
                                 </div>
                                 
-                                <button class="btn btn-lg btn-success btn-block"  >Aceptar</button>
+                                <button class="btn btn-lg btn-success btn-block" type="button" onclick="valida()"  >Aceptar</button>
                             </fieldset>
                         </form>
                     </div>
@@ -69,33 +69,35 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="Dashboard/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="Dashboard/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="Dashboard/dist/js/sb-admin-2.js"></script>
     
-    <script src="../../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
      
     <script>
         function valida(){
             var pass = $('#password').val();
             var user = $('#usuario').val();
-            $.post('../../valida.do',{ 
-               usuario: user, 
-               password: pass 
-           },function (data){
-                   alert(data);
-//                   if(data.indexOf('ERROR')){
-//                       window.location.href = 'main.jsp';
-//                   }else{
-//                       window.location.href = 'index.jsp';
-//                   }
+            $.post('valida.do',{
+                usuario: user, 
+                password: pass },
+                function (data){
+                   //alert(data);
+                   if(data.indexOf('Error')){
+                       alert(data); 
+                       window.location.href = 'main.jsp';
+                   }else{
+                       alert(data);
+                       window.location.href = 'index.jsp';
+                }
             });
         //alert(user);
             
