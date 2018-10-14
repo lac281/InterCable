@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class OpUsuario {
 
-    estructuras.postgresql es = new estructuras.postgresql();
+    estructuras.Conexion es = new estructuras.Conexion();
     Connection con = es.getConexion();
 
     public usuario valida(String user, String pass) {

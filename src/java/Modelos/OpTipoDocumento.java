@@ -15,18 +15,18 @@ import java.sql.SQLException;
  */
 public class OpTipoDocumento {
 
-    estructuras.postgresql es = new estructuras.postgresql();
+    estructuras.Conexion es = new estructuras.Conexion();
     Connection con = es.getConexion();
 
     public boolean ingreso(TipoDocumento tipo) {
         boolean resp = false;
         PreparedStatement ps = null;
-        String sql = "INSERT INTO intercabledb.tipo_id (tipo_identificacion, observaciones) VALUES(?,?);";
+        String sql = "INSERT INTO intercabledb.tipo_id (tipo_identificacion, observaciones) VALUES(?,?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, tipo.getTipo_identifiacion());
             ps.setString(2, tipo.getObservaciones());
-            ps.execute();
+            ps.executeQuery();
             resp = true;
         } catch (SQLException e) {
             resp = false;
