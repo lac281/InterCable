@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class OpTipoDocumento {
 
-    estructuras.Conexion es = new estructuras.Conexion();
+    Parametros.Conexion es = new Parametros.Conexion();
     Connection con = es.getConexion();
 
     public boolean ingreso(TipoDocumento tipo) {

@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class OpTipoEmpleado {
 
-    estructuras.Conexion es = new estructuras.Conexion();
+    Parametros.Conexion es = new Parametros.Conexion();
     Connection con = es.getConexion();
 
     public boolean Ingreso(TipoEmpleado tip) {
