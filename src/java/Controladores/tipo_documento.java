@@ -50,11 +50,13 @@ public class tipo_documento extends HttpServlet {
             boolean res_ = OpTipo.ingreso(Doc);
             if (!res_) {
                 resp.print("Ocurrio un error con el ingreso de los datos, Intente nuevamente!");
+
             } else {
                 resp.print("Registro Ingresado Correctamente!");
-            }
-            //resp.print(tipo.toString() + "    " + Obs.toString());
 
+            }
+
+            //resp.print(tipo.toString() + "    " + Obs.toString());
         }
     }
 

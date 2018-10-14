@@ -1,7 +1,7 @@
 <%--
    Document   : main.jsp
    Created on : 12/10/2018, 12:45:58 PM
-   Author     : InnosoftSolutions
+   Author     : Innosoft Solutions
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -128,6 +128,9 @@
                                     <li>
                                         <a href="#">Modificaci&oacute;n Empleado</a>
                                     </li>
+                                    <li>
+                                        <a href="#" onclick="categoriaModal()">Categoria Empleado</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -249,7 +252,7 @@
                     </div>
                     <div class="modal-body">
                         <label for="">Tipo Documento</label>
-                        <input type="text" class="form-control" id="tipo_doc">
+                        <input type="text" class="form-control" id="tipo_doc" maxlength="4">
                         <label for="">Observaciones</label>
                         <input type="text" class="form-control" id="obser">
                     </div>
@@ -262,6 +265,30 @@
         </div>
         <!-- fin modal-->
 
+        <!-- Modal Categoria Empelados -->
+        <div class="modal fade" id="mdCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Ingreso Tipos de Documentos</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="">Tipo Documento</label>
+                        <input type="text" class="form-control" id="tipo_doc" maxlength="4">
+                        <label for="">Observaciones</label>
+                        <input type="text" class="form-control" id="obser">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="cargar()">Close</button>
+                        <button type="button" class="btn btn-success" onclick="tipoId()">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fin modal-->
 
 
         <!-- jQuery -->
@@ -303,6 +330,12 @@
                                     window.location.href = "main.jsp";
                                 });
                             }
+
+                            function categoriaModal() {
+
+                            }
+
+
         </script>
     </body>
 

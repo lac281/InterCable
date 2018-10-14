@@ -18,12 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Informatica Valle
+ * @author Innosoft Solutions
  */
 public class validacionusuario extends HttpServlet {
 
-        private ServletOutputStream resp;
-        
+    private ServletOutputStream resp;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,8 +35,7 @@ public class validacionusuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,17 +65,17 @@ public class validacionusuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-            String user = request.getParameter("usuario");
-            String pass = request.getParameter("password");
-            resp = response.getOutputStream();
-            if(user.equals("")|| pass.equals("")){
+        String user = request.getParameter("usuario");
+        String pass = request.getParameter("password");
+        resp = response.getOutputStream();
+        if (user.equals("") || pass.equals("")) {
 
-                resp.print("Error: Debe de llenar cada uno de los campos");
-            }else{
-                //request.getRequestDispatcher("main.jsp").forward(request, response);
-                resp.print("Bienvenido " + user + " !");
-            }
-            
+            resp.print("Error: Debe de llenar cada uno de los campos");
+        } else {
+            //request.getRequestDispatcher("main.jsp").forward(request, response);
+            resp.print("Bienvenido " + user + " !");
+        }
+
     }
 
     /**

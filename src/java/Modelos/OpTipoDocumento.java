@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Luis Arturo
+ * @author Innosoft Solutions
  */
 public class OpTipoDocumento {
 
@@ -21,22 +21,30 @@ public class OpTipoDocumento {
     public boolean ingreso(TipoDocumento tipo) {
         boolean resp = false;
         PreparedStatement ps = null;
-        String sql = "INSERT INTO intercabledb.tipo_id (tipo_identificacion, observaciones) VALUES(?,?)";
+        String resp_ = "";
+
         try {
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement("INSERT INTO intercabledb.tipo_id (tipo_identificacion, observaciones) VALUES(?,?)");
             ps.setString(1, tipo.getTipo_identifiacion());
             ps.setString(2, tipo.getObservaciones());
-            ps.executeQuery();
-            resp = true;
+            int res_ = ps.executeUpdate();
+            if (res_ == 0) {
+                resp = false;
+            } else {
+                resp = true;
+            }
+
         } catch (SQLException e) {
             resp = false;
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            }
+//        } finally {
+//            try {
+//                con.close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex);
+//                resp_ = ex.getMessage() + resp;
+//            }
         }
+
         return resp;
     } // FIn Ingreso tipo documento
 

@@ -7,9 +7,10 @@ package Modelos;
 
 /**
  *
- * @author it
+ * @author Innosoft Solutions
  */
 public class cliente {
+
     private String nombre;
     private String direccion;
 
@@ -33,8 +34,5 @@ public class cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    
-    
-    
+
 }

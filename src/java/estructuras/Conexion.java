@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author Luis Arturo
+ * @author Innosoft Solutions
  */
 public final class Conexion {
 
@@ -41,7 +41,7 @@ public final class Conexion {
         return conn;
     }
 
-    protected void closeConexion() {
+    public void closeConexion() {
         if (conn != null) {
             try {
                 conn.close();
