@@ -7,7 +7,9 @@ package Modelos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -75,8 +77,47 @@ public class OpTipoDocumento {
 
     public TipoDocumento buscar(TipoDocumento tip) {
         TipoDocumento tipo = new TipoDocumento();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM intercabledb.tipo_id WHERE idtipo = ?";
 
-        return tipo;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, tip.getIdtipo());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                tipo.setObservaciones(rs.getString("observaciones"));
+                tipo.setTipo_identifiacion(rs.getString("tipo_identificacion"));
+                return tipo;
+            }
+        } catch (SQLException e) {
+            System.out.println("Excepcion: " + e.getMessage());
+        }
+        return null;
     }// Fin Clase buscar
+
+    public ArrayList listarTipos() {
+
+        ArrayList<TipoDocumento> Lista = new ArrayList();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM intercabledb.tipo_id";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                TipoDocumento tipo = new TipoDocumento();
+                tipo.setIdtipo(rs.getInt("idtipo"));
+                tipo.setTipo_identifiacion(rs.getString("tipo_identificacion"));
+                tipo.setObservaciones(rs.getString("observaciones"));
+                Lista.add(tipo);
+            }
+            return Lista;
+        } catch (SQLException e) {
+            System.out.println("Excepcion: " + e.getMessage());
+        }
+        return null;
+    }// Fin Clase listar
 
 }
