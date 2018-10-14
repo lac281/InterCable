@@ -110,6 +110,9 @@
                                     <li>
                                         <a href="#">Modificaci&oacute;n Cliente</a>
                                     </li>
+                                    <li>
+                                        <a href="#" onclick="tipoIdModal()" >Tipos Documento</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -233,6 +236,34 @@
             </div>
         </div>
         <!-- fin modal-->
+
+        <!-- Modal Tipo de Documentos -->
+        <div class="modal fade" id="mdTipoId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Ingreso Tipos de Documentos</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="">Tipo Documento</label>
+                        <input type="text" class="form-control" id="tipo_doc">
+                        <label for="">Observaciones</label>
+                        <input type="text" class="form-control" id="obser">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="cargar()">Close</button>
+                        <button type="button" class="btn btn-success" onclick="tipoId()">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fin modal-->
+
+
+
         <!-- jQuery -->
         <script src="Dashboard/vendor/jquery/jquery.min.js"></script>
 
@@ -257,6 +288,20 @@
                             function cargar() {
                                 $('#mdUsuario').modal('toggle');
                                 window.location.href = "main.jsp";
+                            }
+                            function tipoIdModal() {
+                                $('#mdTipoId').modal('show');
+                            }
+                            function tipoId() {
+                                var tipo = $('#tipo_doc').val();
+                                var obs = $('#obser').val();
+                                $.post('documento.do', {
+                                    tipoDoc: tipo,
+                                    Obser: obs
+                                }, function(data) {
+                                    alert(data);
+                                    window.location.href = "main.jsp";
+                                });
                             }
         </script>
     </body>
