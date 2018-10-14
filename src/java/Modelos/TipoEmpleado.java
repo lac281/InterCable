@@ -16,6 +16,9 @@ public class TipoEmpleado {
     private String tipo_rol;
     private String observaciones;
 
+    public TipoEmpleado() {
+    }
+
     public TipoEmpleado(String tipo_empleado, String tipo_rol, String observaciones) {
         this.tipo_empleado = tipo_empleado;
         this.tipo_rol = tipo_rol;

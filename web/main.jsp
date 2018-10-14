@@ -270,20 +270,33 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel">Ingreso Tipos de Documentos</h2>
+                        <h2 class="modal-title" id="exampleModalLabel">Ingreso Tipo de Empleados</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label for="">Tipo Documento</label>
-                        <input type="text" class="form-control" id="tipo_doc" maxlength="4">
-                        <label for="">Observaciones</label>
-                        <input type="text" class="form-control" id="obser">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="">Tipo Empleado</label>
+                                <input type="text" class="form-control" id="tipoEmpleado" maxlength="50">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="">Tipo de Rol</label>
+                                <input type="text" class="form-control" id="TipoRol" maxlength="50" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Observaciones</label>
+                                <input type="text" class="form-control" id="ObserEmpleado" maxlength="100">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="tipoEmp()">Aceptar</button>
                         <button type="button" class="btn btn-danger" onclick="cargar()">Close</button>
-                        <button type="button" class="btn btn-success" onclick="tipoId()">Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -332,9 +345,24 @@
                             }
 
                             function categoriaModal() {
-
+                                $('#mdCategoria').modal('show');
                             }
 
+                            function tipoEmp() {
+                                var tipE = $('#tipoEmpleado').val();
+                                var tipR = $('#TipoRol').val();
+                                var obEm = $('#ObserEmpleado').val();
+                                $.post('roll.do', {
+                                    tipoEmpleado: tipE,
+                                    tipoRol: tipR,
+                                    Obser: obEm
+                                }, function(data) {
+                                    alert(data);
+                                    window.location.href = "main.jsp";
+                                }
+                                );
+
+                            }
 
         </script>
     </body>

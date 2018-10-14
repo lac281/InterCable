@@ -12,6 +12,10 @@
         <servlet-name>tipo_documento</servlet-name>
         <servlet-class>Controladores.tipo_documento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>tipo_empleado</servlet-name>
+        <servlet-class>Controladores.tipo_empleado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ctrl_cliente</servlet-name>
         <url-pattern>/cliente.do</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>tipo_documento</servlet-name>
         <url-pattern>/documento.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tipo_empleado</servlet-name>
+        <url-pattern>/roll.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
