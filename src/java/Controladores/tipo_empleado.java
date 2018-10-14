@@ -5,9 +5,15 @@
  */
 package Controladores;
 
+import Modelos.OpTipoEmpleado;
 import Modelos.TipoEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -30,19 +36,58 @@ public class tipo_empleado extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private ServletOutputStream resp;
+    private Gson gson;
     TipoEmpleado emp = new TipoEmpleado();
+    OpTipoEmpleado OpEmp = new OpTipoEmpleado();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String TipoEm = request.getParameter("tipoEmpleado");
+
+        String Operacion = request.getParameter("Operacion");
+        String TipoEm = request.getParameter("tipoEmp");
         String TipoRol = request.getParameter("tipoRol");
         String Obser = request.getParameter("Obser");
 
-        resp = response.getOutputStream();
+        switch (Operacion) {
+            case "Ingreso":
 
-        if (TipoEm.equals("") || TipoRol.equals("") || Obser.equals("")) {
-            resp.print("Error: Debe de llenar cada uno de los campos");
-        } else {
+                resp = response.getOutputStream();
+
+                if (TipoEm.equals("") || TipoRol.equals("") || Obser.equals("")) {
+                    resp.print("Error: Debe de llenar cada uno de los campos ");
+                } else {
+                    emp.setTipo_empleado(TipoEm);
+                    emp.setTipo_rol(TipoRol);
+                    emp.setObservaciones(Obser);
+                    boolean res_ = OpEmp.Ingreso(emp);
+                    if (!res_) {
+                        resp.print("Ocurrio un error con el ingreso de los datos, Intente nuevamente!");
+
+                    } else {
+                        resp.print("Registro Ingresado Correctamente!");
+
+                    }
+                }
+                break;
+
+            case "Busqueda":
+
+                break;
+
+            case "Listar":
+                ArrayList<TipoEmpleado> Lista = new ArrayList();
+
+                response.setContentType("application/json:charset=UTF-8");
+                ServletOutputStream out = response.getOutputStream();
+                Lista = OpEmp.listarTipos();
+                JsonArray jarray = gson.toJsonTree(Lista).getAsJsonArray();
+                JsonObject jsonOb = new JsonObject();
+                jsonOb.add("TipoEmpleados", jarray);
+                String JSON = jsonOb.toString();
+                resp.print(JSON);
+                break;
+            default:
+                break;
 
         }
     }

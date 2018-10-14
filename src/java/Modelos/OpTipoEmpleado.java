@@ -7,7 +7,9 @@ package Modelos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,12 +24,12 @@ public class OpTipoEmpleado {
         boolean res = false;
         PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement("INSERT INTO intercabledb.tipo_em (tipo_identificacion, observaciones) VALUES(?,?,?)");
+            ps = con.prepareStatement("INSERT INTO intercabledb.tipo_em (tipo_empleado, tipo_rol, observaciones) VALUES(?,?,?)");
             ps.setString(1, tip.getTipo_empleado());
             ps.setString(2, tip.getTipo_rol());
             ps.setString(3, tip.getObservaciones());
-            boolean res_ = ps.execute();
-            if (!res_) {
+            int res_ = ps.executeUpdate();
+            if (res_ == 0) {
                 res = false;
             } else {
                 res = true;
@@ -36,5 +38,30 @@ public class OpTipoEmpleado {
             res = false;
         }
         return res;
-    }
+    }// FIn Clase Ingreso
+
+    public ArrayList listarTipos() {
+
+        ArrayList<TipoEmpleado> Lista = new ArrayList();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM intercabledb.tipo_id";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                TipoEmpleado tipo = new TipoEmpleado();
+                tipo.setIdtipo(rs.getInt("idtipo"));
+                tipo.setTipo_empleado(rs.getString("tipo_empleado"));
+                tipo.setTipo_rol(rs.getString("tipo_rol"));
+                tipo.setObservaciones(rs.getString("observaciones"));
+                Lista.add(tipo);
+            }
+            return Lista;
+        } catch (SQLException e) {
+            System.out.println("Excepcion: " + e.getMessage());
+        }
+        return null;
+    }// Fin Clase Listar
 }

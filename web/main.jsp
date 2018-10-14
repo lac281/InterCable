@@ -110,9 +110,11 @@
                                     <li>
                                         <a href="#">Modificaci&oacute;n Cliente</a>
                                     </li>
+
                                     <li>
-                                        <a href="#" onclick="tipoIdModal()" >Tipos Documento</a>
+                                        <a href="#">Tipo Documentos <span class="fa arrow"></span></a>
                                     </li>
+
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -129,8 +131,19 @@
                                         <a href="#">Modificaci&oacute;n Empleado</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="categoriaModal()">Categoria Empleado</a>
+                                        <a href="#" >Categoria Empleado<span class="fa arrow"></span> </a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="#" onclick="categoriaModal()">Ingreso Tipo Empleado </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="modificarCategorias()" >Modificacion Tipos Empleado</a>
+                                            </li>
+
+                                        </ul>
+                                        <!-- /.nav-third-level-->
                                     </li>
+
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
@@ -142,6 +155,7 @@
                                     </li>
                                     <li>
                                         <a href="#">Modificaci&oacute;n Usuario</a>
+
                                     </li>
                                 </ul>
                             </li>
@@ -205,7 +219,24 @@
                 <!-- /.row -->
                 <div class="row">
                     <div id="contenido">
+                        <div id="tipoEmpleado" style="display:none;">
+                            <h2>Listado Tipos de Empleado</h2>
+                            <table id="tbl_tipoEmp" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Tipo de Empleado</th>
+                                        <th>Tipo de Rol</th>
+                                        <th>Observaciones</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -279,7 +310,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Tipo Empleado</label>
-                                <input type="text" class="form-control" id="tipoEmpleado" maxlength="50">
+                                <input type="text" class="form-control" id="tipoEmp" maxlength="50">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Tipo de Rol</label>
@@ -289,7 +320,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="">Observaciones</label>
-                                <input type="text" class="form-control" id="ObserEmpleado" maxlength="100">
+                                <input type="text" class="form-control" id="ObserEmp" maxlength="100">
                             </div>
                         </div>
 
@@ -349,19 +380,28 @@
                             }
 
                             function tipoEmp() {
-                                var tipE = $('#tipoEmpleado').val();
+                                var tipE = $('#tipoEmp').val();
                                 var tipR = $('#TipoRol').val();
-                                var obEm = $('#ObserEmpleado').val();
+                                var obEm = $('#ObserEmp').val();
                                 $.post('roll.do', {
-                                    tipoEmpleado: tipE,
+                                    tipoEmp: tipE,
                                     tipoRol: tipR,
-                                    Obser: obEm
+                                    Obser: obEm,
+                                    Operacion: 'Ingreso'
                                 }, function(data) {
                                     alert(data);
                                     window.location.href = "main.jsp";
                                 }
                                 );
+                            }
 
+                            function modificarCategorias() {
+                                $.post('roll.do', {
+                                    Operacion: 'Listar'
+                                }, function(lista) {
+
+                                    alert(lista);
+                                });
                             }
 
         </script>
