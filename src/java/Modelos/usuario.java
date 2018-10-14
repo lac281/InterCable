@@ -7,7 +7,7 @@ package Modelos;
 
 /**
  *
- * @author it
+ * @author Innosoft Solutions
  */
 public class usuario {
     

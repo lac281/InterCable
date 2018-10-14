@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package Modelos;
-import estructuras.postgresql;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  *
- * @author it
+ * @author Innosoft Solutions
  */
 public class OpUsuario {
     
