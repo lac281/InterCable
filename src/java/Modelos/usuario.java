@@ -10,7 +10,7 @@ package Modelos;
  * @author Innosoft Solutions
  */
 public class usuario {
-    
+
     private int idusuario;
     private String usuario;
     private String contrasena;
@@ -20,10 +20,8 @@ public class usuario {
 
     public usuario() {
     }
-       
 
-    public usuario(int idusuario, String usuario, String contrasena, int tipo_usuario, int idempleado, int status_usuario) {
-        this.idusuario = idusuario;
+    public usuario(String usuario, String contrasena, int tipo_usuario, int idempleado, int status_usuario) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.tipo_usuario = tipo_usuario;
@@ -79,7 +77,4 @@ public class usuario {
         this.status_usuario = status_usuario;
     }
 
-    
-    
-    
 }

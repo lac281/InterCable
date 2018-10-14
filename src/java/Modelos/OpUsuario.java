@@ -104,14 +104,8 @@ public class OpUsuario {
             }
         } catch (SQLException ex) {
 
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.err.println(e);
-            }
         }
-        return null;
+        return us;
     }
 
 }

@@ -48,4 +48,35 @@ public class OpTipoDocumento {
         return resp;
     } // FIn Ingreso tipo documento
 
+    public boolean modificar(TipoDocumento tipo) {
+        boolean resp = false;
+        PreparedStatement ps = null;
+        String resp_ = "";
+
+        try {
+            ps = con.prepareStatement("UPDATE intercabledb.tipo_id SET tipo_identificacion = ?, observaciones = ? WHERE idtipo = ?)");
+            ps.setString(1, tipo.getTipo_identifiacion());
+            ps.setString(2, tipo.getObservaciones());
+            ps.setLong(3, tipo.getIdtipo());
+            int res_ = ps.executeUpdate();
+            if (res_ == 0) {
+                resp = false;
+            } else {
+                resp = true;
+            }
+
+        } catch (SQLException e) {
+            resp = false;
+
+        }
+        return resp;
+
+    } // Fin Clase modificar
+
+    public TipoDocumento buscar(TipoDocumento tip) {
+        TipoDocumento tipo = new TipoDocumento();
+
+        return tipo;
+    }// Fin Clase buscar
+
 }
