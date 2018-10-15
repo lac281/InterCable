@@ -137,7 +137,7 @@
                                                 <a href="#" onclick="categoriaModal()">Ingreso Tipo Empleado </a>
                                             </li>
                                             <li>
-                                                <a href="#" onclick="modificarCategorias()" >Modificacion Tipos Empleado</a>
+                                                <a href="#" onclick="modificarCategorias()" >Modificacion Tipo Empleado</a>
                                             </li>
 
                                         </ul>
@@ -397,10 +397,12 @@
 
                             function modificarCategorias() {
                                 $.post('roll.do', {
+                                    tipoEmp: '',
+                                    tipoRol: '',
+                                    Obser: '',
                                     Operacion: 'Listar'
-                                }, function(lista) {
-
-                                    alert(lista);
+                                }, function(data) {
+                                    alert(data);
                                 });
                             }
 

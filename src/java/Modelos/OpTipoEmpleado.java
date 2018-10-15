@@ -40,12 +40,12 @@ public class OpTipoEmpleado {
         return res;
     }// FIn Clase Ingreso
 
-    public ArrayList listarTipos() {
+    public ArrayList<TipoEmpleado> listarTipos() {
 
         ArrayList<TipoEmpleado> Lista = new ArrayList();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM intercabledb.tipo_id";
+        String sql = "SELECT * FROM intercabledb.tipo_em";
 
         try {
             ps = con.prepareStatement(sql);
@@ -58,10 +58,10 @@ public class OpTipoEmpleado {
                 tipo.setObservaciones(rs.getString("observaciones"));
                 Lista.add(tipo);
             }
-            return Lista;
         } catch (SQLException e) {
+            Lista = null;
             System.out.println("Excepcion: " + e.getMessage());
         }
-        return null;
+        return Lista;
     }// Fin Clase Listar
 }

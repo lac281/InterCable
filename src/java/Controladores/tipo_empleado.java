@@ -9,10 +9,6 @@ import Modelos.OpTipoEmpleado;
 import Modelos.TipoEmpleado;
 import java.io.IOException;
 import java.io.PrintWriter;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -36,7 +32,7 @@ public class tipo_empleado extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private ServletOutputStream resp;
-    private Gson gson;
+
     TipoEmpleado emp = new TipoEmpleado();
     OpTipoEmpleado OpEmp = new OpTipoEmpleado();
 
@@ -75,16 +71,15 @@ public class tipo_empleado extends HttpServlet {
                 break;
 
             case "Listar":
-                ArrayList<TipoEmpleado> Lista = new ArrayList();
+                ArrayList<TipoEmpleado> Lista = new ArrayList<TipoEmpleado>();
 
-                response.setContentType("application/json:charset=UTF-8");
-                ServletOutputStream out = response.getOutputStream();
                 Lista = OpEmp.listarTipos();
-                JsonArray jarray = gson.toJsonTree(Lista).getAsJsonArray();
-                JsonObject jsonOb = new JsonObject();
-                jsonOb.add("TipoEmpleados", jarray);
-                String JSON = jsonOb.toString();
-                resp.print(JSON);
+                if (Lista == null) {
+                    resp.print("La lista viene Vacia");
+                } else {
+                    request.setAttribute("ListaEmpleado", Lista);
+                }
+
                 break;
             default:
                 break;
