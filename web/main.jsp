@@ -4,7 +4,10 @@
    Author     : Innosoft Solutions
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Modelos.TipoEmpleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -402,8 +405,21 @@
                                     Obser: '',
                                     Operacion: 'Listar'
                                 }, function(data) {
-                                    alert(data);
+                                    var table = null;
+                                    var result = JSON.parse(data);
+                                    for (int i = 0; i < result.length; i++) {
+                                        /*table = '<tr><td>' + result.TipoEmpleado[i].iftipo + '</td>' +
+                                         '<td>' + result.TipoEmpleado[i].tipo_empleado + '</td>' +
+                                         '<td>' + result.TipoEmpleado[i].tipo_rol + '</td>' +
+                                         '<td>' + result.TipoEmpleado[i].observaciones + '</td>' +
+                                         '<td><button class="btn btn_danger" type="button" onclick="editarTipo(this)">Editar</button></td></tr>';*/
+                                        alert(result.TipoEmpleado[i].tipo_empleado);
+                                    }
+
+//                                    $('#tbl_tipoEmp tbody:').html(table);
+//                                    $('#tipoEmpleado').show();
                                 });
+
                             }
 
         </script>

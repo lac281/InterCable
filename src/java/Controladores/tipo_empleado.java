@@ -7,9 +7,14 @@ package Controladores;
 
 import Modelos.OpTipoEmpleado;
 import Modelos.TipoEmpleado;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -74,12 +79,26 @@ public class tipo_empleado extends HttpServlet {
                 ArrayList<TipoEmpleado> Lista = new ArrayList<TipoEmpleado>();
 
                 Lista = OpEmp.listarTipos();
-                if (Lista == null) {
-                    resp.print("La lista viene Vacia");
-                } else {
-                    request.setAttribute("ListaEmpleado", Lista);
+//                if (Lista == null) {
+//                    resp.print("La lista viene Vacia");
+//                } else {
+//                    request.setAttribute("ListaEmpleado", Lista);
+//                }
+                Gson gson = new GsonBuilder().create();
+                JsonArray JArray = gson.toJsonTree(Lista).getAsJsonArray();
+                JsonObject jsonOb = new JsonObject();
+                jsonOb.add("TipoEmpleado", JArray);
+
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                try {
+                    out.println(jsonOb);
+                } finally {
+                    out.close();
                 }
 
+//                request.setAttribute("ListaTipoEmpleado", Lista);
+//                request.getRequestDispatcher("main.jsp").forward(request, response);
                 break;
             default:
                 break;
