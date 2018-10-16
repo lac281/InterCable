@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ctrl_cliente</servlet-name>
-        <servlet-class>Controladores.ctrl_cliente</servlet-class>
+        <servlet-class>Controladores.clientes</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>validacionusuario</servlet-name>

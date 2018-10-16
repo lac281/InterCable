@@ -5,7 +5,6 @@
  */
 package Controladores;
 
-import Modelos.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -19,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author it
  */
-public class ctrl_cliente extends HttpServlet {
-    
-      private ServletOutputStream sal;
-      
+public class clientes extends HttpServlet {
+
+    private ServletOutputStream sal;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,9 +33,7 @@ public class ctrl_cliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-           
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,19 +63,7 @@ public class ctrl_cliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        String nombre = request.getParameter("nombre");
-        String direccion = request.getParameter("direccion");
-        if(nombre.equals("") || direccion.equals("")){
-            //request.getRequestDispatcher("error.jsp").forward(request, response);
-            sal = response.getOutputStream();
-            sal.print("Ingrese datos en los campos, no pueden quedar vacios");
-        }else{
-            Cliente cli = new Cliente(nombre,direccion);
-            request.getSession().setAttribute("cliente1", cli);
-            //sal.print("Ingrese datos en los campos");
-            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
-            }
+
     }
 
     /**

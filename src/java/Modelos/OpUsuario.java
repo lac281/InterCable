@@ -19,14 +19,14 @@ public class OpUsuario {
     Parametros.Conexion es = new Parametros.Conexion();
     Connection con = es.getConexion();
 
-    public Usuario valida(String user, String pass) {
-        Usuario resp = null;
+    public Usuarios valida(String user, String pass) {
+        Usuarios resp = null;
         String sql = "SELECT * FROM intercabledb.tipo_id  ";
 
         return resp;
     }
 
-    public boolean ingreso(Usuario user) {
+    public boolean ingreso(Usuarios user) {
         boolean resp = false;
         PreparedStatement ps = null;
         String sql = "INSERT INTO intercabledb.usuario (usuario,"
@@ -38,7 +38,7 @@ public class OpUsuario {
             ps.setString(1, user.getUsuario());
             ps.setString(2, user.getContrasena());
             ps.setInt(3, user.getTipo_usuario());
-            ps.setInt(4, user.getIdempleado());
+            ps.setLong(4, user.getIdempleado());
             ps.setInt(5, user.getStatus_usuario());
             ps.execute();
             resp = true;
@@ -54,7 +54,7 @@ public class OpUsuario {
         return resp;
     }
 
-    public boolean modificar(Usuario user) {
+    public boolean modificar(Usuarios user) {
         boolean resp = false;
         PreparedStatement ps = null;
         String sql = "UPDATE intercabledb.usuario SET usuario = ?,"
@@ -68,9 +68,9 @@ public class OpUsuario {
             ps.setString(1, user.getUsuario());
             ps.setString(2, user.getContrasena());
             ps.setInt(3, user.getTipo_usuario());
-            ps.setInt(4, user.getIdempleado());
+            ps.setLong(4, user.getIdempleado());
             ps.setInt(5, user.getStatus_usuario());
-            ps.setInt(6, user.getIdempleado());
+            ps.setLong(6, user.getIdempleado());
             ps.execute();
             resp = true;
         } catch (SQLException ex) {
@@ -85,14 +85,14 @@ public class OpUsuario {
         return resp;
     }
 
-    public Usuario buscar(Usuario user) {
+    public Usuarios buscar(Usuarios user) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM tipo_id WHERE idusuario = ?";
-        Usuario us = new Usuario();
+        Usuarios us = new Usuarios();
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, user.getIdempleado());
+            ps.setLong(1, user.getIdempleado());
             rs = ps.executeQuery();
             if (rs.next()) {
                 us.setIdusuario(Integer.parseInt(rs.getString("idusuario")));
