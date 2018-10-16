@@ -33,6 +33,20 @@ public class clientes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            
+        String operacion = request.getParameter("Operacion");
+        
+        switch(operacion){
+            case "Ingreso":
+                break;
+                
+            case "Listado":
+                break;
+                
+            default:
+                break;
+        }
+                
 
     }
 
