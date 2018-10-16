@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Luis Arturo
  */
-public class Empelados {
+public class Empleados {
 
     private long idempleado;
     private String codigo_empleado;
@@ -19,6 +19,7 @@ public class Empelados {
     private String nit_empleado;
     private String nombre_empleado;
     private String apellido_empleado;
+    private String direccion_empleado;
     private String telefono_empleado;
     private int tipo_identificacion;
     private int tipo_empleado;
@@ -36,7 +37,7 @@ public class Empelados {
     private Date fecha_despido;
     private String motivo_despido;
 
-    public Empelados() {
+    public Empleados() {
     }
 
     public long getIdempleado() {
@@ -85,6 +86,14 @@ public class Empelados {
 
     public void setApellido_empleado(String apellido_empleado) {
         this.apellido_empleado = apellido_empleado;
+    }
+
+    public String getDireccion_empleado() {
+        return direccion_empleado;
+    }
+
+    public void setDireccion_empleado(String direccion_empleado) {
+        this.direccion_empleado = direccion_empleado;
     }
 
     public String getTelefono_empleado() {
