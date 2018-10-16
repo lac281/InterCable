@@ -19,14 +19,14 @@ public class OpUsuario {
     Parametros.Conexion es = new Parametros.Conexion();
     Connection con = es.getConexion();
 
-    public usuario valida(String user, String pass) {
-        usuario resp = null;
+    public Usuario valida(String user, String pass) {
+        Usuario resp = null;
         String sql = "SELECT * FROM intercabledb.tipo_id  ";
 
         return resp;
     }
 
-    public boolean ingreso(usuario user) {
+    public boolean ingreso(Usuario user) {
         boolean resp = false;
         PreparedStatement ps = null;
         String sql = "INSERT INTO intercabledb.usuario (usuario,"
@@ -54,7 +54,7 @@ public class OpUsuario {
         return resp;
     }
 
-    public boolean modificar(usuario user) {
+    public boolean modificar(Usuario user) {
         boolean resp = false;
         PreparedStatement ps = null;
         String sql = "UPDATE intercabledb.usuario SET usuario = ?,"
@@ -85,11 +85,11 @@ public class OpUsuario {
         return resp;
     }
 
-    public usuario buscar(usuario user) {
+    public Usuario buscar(Usuario user) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM tipo_id WHERE idusuario = ?";
-        usuario us = new usuario();
+        Usuario us = new Usuario();
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, user.getIdempleado());

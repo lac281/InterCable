@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Luis Arturo
+ * @author Innosoft Solutions
  */
 public class tipo_documento extends HttpServlet {
 

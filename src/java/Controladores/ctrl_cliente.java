@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Modelos.cliente;
+import Modelos.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -74,7 +74,7 @@ public class ctrl_cliente extends HttpServlet {
             sal = response.getOutputStream();
             sal.print("Ingrese datos en los campos, no pueden quedar vacios");
         }else{
-            cliente cli = new cliente(nombre,direccion);
+            Cliente cli = new Cliente(nombre,direccion);
             request.getSession().setAttribute("cliente1", cli);
             //sal.print("Ingrese datos en los campos");
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);

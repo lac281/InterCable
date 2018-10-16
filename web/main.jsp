@@ -127,10 +127,10 @@
                                 <a href="#"><i class="fa fa-edit fa-fw"></i> Nomima<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Ingreso Empleado</a>
+                                        <a href="#" onclick="ingresoEmpleado()">Ingreso Empleado</a>
                                     </li>
                                     <li>
-                                        <a href="#">Modificaci&oacute;n Empleado</a>
+                                        <a href="#" onclick="listadoEmpleado()">Modificaci&oacute;n Empleado</a>
                                     </li>
                                     <li>
                                         <a href="#" >Categoria Empleado<span class="fa arrow"></span> </a>
@@ -220,26 +220,35 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div id="contenido">
-                        <div id="tipoEmpleado" style="display:none;">
-                            <h2>Listado Tipos de Empleado</h2>
-                            <table id="tbl_tipoEmp" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Codigo</th>
-                                        <th>Tipo de Empleado</th>
-                                        <th>Tipo de Rol</th>
-                                        <th>Observaciones</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div class="container-fluid">
+                        <div id="contenido">
+                            <div id="tipoEmpleado" style="display:none;">
+                                <h2>Listado Tipos de Empleado</h2>
+                                <table id="tbl_tipoEmp" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Tipo de Empleado</th>
+                                            <th>Tipo de Rol</th>
+                                            <th>Observaciones</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                </tbody>
+                                    </tbody>
 
-                            </table>
+                                </table>
+                            </div>
+                            <div id="ListEmpleado" style="display:none;">
+                                <h2>Listado de Empleados</h2>
+                            </div>
+
                         </div>
+                        <!--fin de contenido-->
                     </div>
+                    <!--fin de container-fluid-->
+
                 </div>
                 <!-- /.row -->
             </div>
@@ -398,27 +407,40 @@
                             }
 
                             function modificarCategorias() {
-                                /*$.post('roll.do', {
-                                 tipoEmp: '',
-                                 tipoRol: '',
-                                 Obser: '',
-                                 Operacion: 'Listar'
-                                 }, function(data) {
-                                 var table = null;
-                                 var result = JSON.parse(data);
-                                 for (int i = 0; i < result.length; i++) {
-                                 /*table = '<tr><td>' + result.TipoEmpleado[i].iftipo + '</td>' +
-                                 '<td>' + result.TipoEmpleado[i].tipo_empleado + '</td>' +
-                                 '<td>' + result.TipoEmpleado[i].tipo_rol + '</td>' +
-                                 '<td>' + result.TipoEmpleado[i].observaciones + '</td>' +
-                                 '<td><button class="btn btn_danger" type="button" onclick="editarTipo(this)">Editar</button></td></tr>';
-                                 alert(result.TipoEmpleado[i].tipo_empleado);
-                                 }
+                                var tabla;
+                                $.post('roll.do', {
+                                    tipoEmp: '',
+                                    tipoRol: '',
+                                    Obser: '',
+                                    Operacion: 'Listar'
+                                }, function(data) {
+                                    var result = JSON.parse(data);
+                                    var x = Object.keys(result.TipoEmpleado).length;
+                                    for (var i = 0; i < x; i++) {
+                                        var tablaHtml = '<tr><td>' + result.TipoEmpleado[i].idtipo + '</td>' +
+                                                '<td>' + result.TipoEmpleado[i].tipo_empleado + '</td>' +
+                                                '<td>' + result.TipoEmpleado[i].tipo_rol + '</td>' +
+                                                '<td>' + result.TipoEmpleado[i].observaciones + '</td>' +
+                                                '<td><button class="btn btn-warning" type="button" onclick="editarTipo(' +
+                                                result.TipoEmpleado[i].idtipo + ')">Editar</button></td></tr>';
 
-                                 //                                    $('#tbl_tipoEmp tbody:').html(table);*/
-//                                    $('#tipoEmpleado').show();
-//                                });
+                                        tabla = tabla + tablaHtml;
+
+                                    }
+                                    $('#tbl_tipoEmp tbody').html(tabla);
+
+                                });
+                                $('#ListEmpleado').hide();
                                 $('#tipoEmpleado').show();
+                            }
+
+                            function editarTipo(tipo) {
+                                alert(tipo);
+                            }
+
+                            function listadoEmpleado() {
+                                $('#tipoEmpleado').hide();
+                                $('#ListEmpleado').show();
                             }
 
         </script>
