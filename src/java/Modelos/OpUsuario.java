@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,11 +20,31 @@ public class OpUsuario {
     Parametros.Conexion es = new Parametros.Conexion();
     Connection con = es.getConexion();
 
-    public Usuarios valida(String user, String pass) {
-        Usuarios resp = null;
-        String sql = "SELECT * FROM intercabledb.tipo_id  ";
-
-        return resp;
+    public ArrayList<Usuarios> valida(Usuarios us) {
+        Usuarios user = new Usuarios();
+        ArrayList<Usuarios> lista = new ArrayList<Usuarios>();
+        String sql = "SELECT * FROM intercabledb.valida_usuario(?,?)";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, us.getUsuario());
+            ps.setString(2, us.getContrasena());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                user.setIdusuario(rs.getLong("id"));
+                user.setUsuario(rs.getString("us"));
+                user.setTipo_usuario(rs.getInt("tipo"));
+                user.setIdempleado(rs.getLong("codigo"));
+                user.setStatus_usuario(rs.getInt("sta"));
+                user.setNombre(rs.getString("nombre"));
+                lista.add(user);
+            }
+        } catch (SQLException e) {
+            user = null;
+            System.out.println("Excepcion: " + e.getMessage());
+        }
+        return lista;
     }
 
     public boolean ingreso(Usuarios user) {
@@ -31,7 +52,7 @@ public class OpUsuario {
         PreparedStatement ps = null;
         String sql = "INSERT INTO intercabledb.usuario (usuario,"
                 + "contrasena,tipo_usuario,idempleado,"
-                + "status_usuario) VALUES (?,?,?,?,?)";
+                + "status_usuario) VALUES (?,md5(md5(?)),?,?,?)";
 
         try {
             ps = con.prepareStatement(sql);

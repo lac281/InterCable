@@ -12,6 +12,7 @@ public class Usuarios {
     private int tipo_usuario;
     private long idempleado;
     private int status_usuario;
+    private String nombre;
 
     public Usuarios() {
     }
@@ -62,6 +63,14 @@ public class Usuarios {
 
     public void setStatus_usuario(int status_usuario) {
         this.status_usuario = status_usuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }
