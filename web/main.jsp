@@ -115,6 +115,16 @@
 
                                     <li>
                                         <a href="#">Tipo Documentos <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="#" onclick="doctosModal()">Ingreso Tipo Documento </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="modificarDoctos()" >Modificacion Tipo Documentos</a>
+                                            </li>
+
+                                        </ul>
+                                        <!-- /.nav-third-level-->
                                     </li>
 
                                 </ul>
@@ -371,7 +381,7 @@
                                 $('#mdUsuario').modal('toggle');
                                 window.location.href = "main.jsp";
                             }
-                            function tipoIdModal() {
+                            function doctosModal() {
                                 $('#mdTipoId').modal('show');
                             }
                             function tipoId() {
