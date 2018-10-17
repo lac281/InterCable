@@ -54,7 +54,7 @@ public class tipo_documento extends HttpServlet {
                     resp.print("Error: Debe de llenar cada uno de los campos");
                 } else {
 
-                    Doc.setTipo_identifiacion(tipo);
+                    Doc.setTipo_identificacion(tipo);
                     Doc.setObservaciones(Obs);
                     boolean res_ = OpTipo.ingreso(Doc);
                     if (!res_) {
@@ -70,21 +70,16 @@ public class tipo_documento extends HttpServlet {
                 break;
 
             case "Listar":
-                ArrayList<TipoDocumento> Listtipo = new ArrayList();
+
+                ArrayList<TipoDocumento> Listtipo = new ArrayList<TipoDocumento>();
                 Listtipo = OpTipo.listarTipos();
+
                 Gson gson = new GsonBuilder().create();
                 JsonArray JArray = gson.toJsonTree(Listtipo).getAsJsonArray();
                 JsonObject jsonOb = new JsonObject();
                 jsonOb.add("Documento", JArray);
+                resp.print(jsonOb.toString());
 
-                response.setContentType("text/html;charset=UTF-8");
-                PrintWriter out = response.getWriter();
-                try {
-                    out.println(jsonOb);
-
-                } finally {
-                    out.close();
-                }
                 break;
 
             case "Modificar":

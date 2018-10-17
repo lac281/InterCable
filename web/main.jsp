@@ -270,40 +270,98 @@
 
                             <div id="ingresoEmpleado" style="display: none;">
                                 <h2>Ingreso Nuevo Empleado</h2>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <label for="">Identifiaci&oacute;n</label>
-                                        <input type="text" class="form-control" id="txt_identificacion">
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <label for="">Tipo de Iden</label>
-                                        <select name="txt_tipoiden" class="form-control" id="txt_tipoiden">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="">Identifiaci&oacute;n</label>
+                                            <input type="text" class="form-control" id="txt_identificacion">
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label for="">Tipo de Iden</label>
+                                            <select name="txt_tipoiden" class="form-control" id="txt_tipoiden">
 
-                                        </select>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="">NIT</label>
+                                            <input type="text" class="form-control" id="txt_nit">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Tel&eacute;fono</label>
+                                            <input type="text" class="form-control" id="txt_telefono">
+                                        </div>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <label for="">NIT</label>
-                                        <input type="text" class="form-control" id="txt_nit">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="">Nombres</label>
+                                            <input type="text" class="form-control" id="txt_nombre">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Apellidos</label>
+                                            <input type="text" class="form-control" id="txt_apellido">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Direcci&oacute;n</label>
+                                            <input type="text" class="form-control" id="txt_direccion">
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label for="">Tel&eacute;fono</label>
-                                        <input type="text" class="form-control" id="txt_telefono">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label for="">Tipo Empleado</label>
+                                            <select name="txt_tipoempleado" id="txt_tipoempleado" class="form-control">
+
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="">Fecha Nacimiento</label>
+                                            <input type="date" class="form-control" id="txt_fechanac">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="">IGSS</label>
+                                            <input type="text" class="form-control" id="txt_igss">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="">IRTRA</label>
+                                            <input type="text" class="form-control" id="txt_irtra">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="">Tipo Sangre</label>
+                                            <input type="text" class="form-control" id="txt_tiposangre" maxlength="10">
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <label for="">Salario</label>
+                                            <input type="text" class="form-control" id="txt_salario">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Bonificaci&oacute;n</label>
+                                            <input type="text" class="form-control" id="txt_bonificacion">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="">Contacto Emergencia</label>
+                                            <input type="text" class="form-control" id="txt_contacto">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="">Tel&eacute;fonos de Emergencia</label>
+                                            <input type="text" class="form-control" id="txt_telcontacto">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-9">
+
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <br>
+                                            <button class="btn btn-success" id="btn_guardar" onclick="guardaEmpleado()" >Guardar</button>
+                                            <button class="btn btn-danger" id="btn_cerrar" onclick="cargar()" >Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <label for="">Nombres</label>
-                                        <input type="text" class="form-control" id="txt_nombre">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="">Apellidos</label>
-                                        <input type="text" class="form-control" id="txt_apellido">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label for="">Direcci&oacute;n</label>
-                                        <input type="text" class="form-control" id="txt_direccion">
-                                    </div>
-                                </div>
+
                             </div>
 
                         </div>
@@ -496,6 +554,7 @@
 
                                 });
                                 $('#ListEmpleado').hide();
+                                $('#ingresoEmpleado').hide();
                                 $('#tipoEmpleado').show();
                             }
 
@@ -505,6 +564,7 @@
 
                             function listadoEmpleado() {
                                 $('#tipoEmpleado').hide();
+                                $('#ingresoEmpleado').hide();
                                 $('#ListEmpleado').show();
                             }
 
@@ -516,17 +576,34 @@
                                     Obser: '',
                                     Operacion: 'Listar'
                                 }, function(data) {
-                                    //var ob = JSON.parse(data);
-                                    alert(data);
-                                    /*var x = Object.keys(result.TipoEmpleado).length;
-                                     var select = "";
-                                     for (var i = 0; i < x; i++) {
-                                     var newSelect = "<option value='" + ob.Documento[i].idtipo + "'>" + ob.Documento[i].tipo_identificacion + "</option>";
-                                     select = select + newSelect;
-                                     }
-                                     $('#txt_tipoiden').append(select);*/
-                                    //$('#ingresoEmpleado').show();
+                                    var ob = JSON.parse(data);
+                                    var x = Object.keys(ob.Documento).length;
+                                    var select = "";
+                                    for (var i = 0; i < x; i++) {
+                                        var newSelect = "<option value='" + ob.Documento[i].idtipo + "'>" + ob.Documento[i].tipo_identificacion + "</option>";
+                                        select = select + newSelect;
+                                    }
+                                    $('#txt_tipoiden').html(select);
+
+
                                 });
+
+                                $.post('roll.do', {
+                                    tipoEmp: '',
+                                    tipoRol: '',
+                                    Obser: '',
+                                    Operacion: 'Listar'
+                                }, function(typ) {
+                                    var obj = JSON.parse(typ);
+                                    var z = Object.keys(obj.TipoEmpleado).length;
+                                    var select = "";
+                                    for (var i = 0; i < z; i++) {
+                                        var newSelect = "<option value='" + obj.TipoEmpleado[i].idtipo + "'>" + obj.TipoEmpleado[i].tipo_empleado + "</option>";
+                                        select = select + newSelect;
+                                    }
+                                    $('#txt_tipoempleado').html(select);
+                                });
+                                $('#ingresoEmpleado').show();
 
                             }
 

@@ -19,11 +19,6 @@ public class TipoDocumento {
 
     }
 
-    public TipoDocumento(String tipo_identifiacion, String observaciones) {
-        this.tipo_identificacion = tipo_identifiacion;
-        this.observaciones = observaciones;
-    }
-
     public int getIdtipo() {
         return idtipo;
     }
@@ -32,12 +27,12 @@ public class TipoDocumento {
         this.idtipo = idtipo;
     }
 
-    public String getTipo_identifiacion() {
+    public String getTipo_identificacion() {
         return tipo_identificacion;
     }
 
-    public void setTipo_identifiacion(String tipo_identifiacion) {
-        this.tipo_identificacion = tipo_identifiacion;
+    public void setTipo_identificacion(String tipo_identificacion) {
+        this.tipo_identificacion = tipo_identificacion;
     }
 
     public String getObservaciones() {

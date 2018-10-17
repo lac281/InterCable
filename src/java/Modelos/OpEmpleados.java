@@ -47,7 +47,7 @@ public class OpEmpleados {
             ps.setString(16, emp.getTelefono_emergencia());
             ps.setDouble(17, emp.getSalario());
             ps.setDouble(18, emp.getBonificacion());
-            ps.setDouble(19, emp.getDescuento_igss());
+            ps.setDouble(19, 0.0483);
             int res_ = ps.executeUpdate();
             if (res_ == 0) {
                 res = false;

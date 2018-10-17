@@ -27,7 +27,7 @@ public class OpTipoDocumento {
 
         try {
             ps = con.prepareStatement("INSERT INTO intercabledb.tipo_id (tipo_identificacion, observaciones) VALUES(?,?)");
-            ps.setString(1, tipo.getTipo_identifiacion());
+            ps.setString(1, tipo.getTipo_identificacion());
             ps.setString(2, tipo.getObservaciones());
             int res_ = ps.executeUpdate();
             if (res_ == 0) {
@@ -57,7 +57,7 @@ public class OpTipoDocumento {
 
         try {
             ps = con.prepareStatement("UPDATE intercabledb.tipo_id SET tipo_identificacion = ?, observaciones = ? WHERE idtipo = ?)");
-            ps.setString(1, tipo.getTipo_identifiacion());
+            ps.setString(1, tipo.getTipo_identificacion());
             ps.setString(2, tipo.getObservaciones());
             ps.setLong(3, tipo.getIdtipo());
             int res_ = ps.executeUpdate();
@@ -87,7 +87,7 @@ public class OpTipoDocumento {
             rs = ps.executeQuery();
             if (rs.next()) {
                 tipo.setObservaciones(rs.getString("observaciones"));
-                tipo.setTipo_identifiacion(rs.getString("tipo_identificacion"));
+                tipo.setTipo_identificacion(rs.getString("tipo_identificacion"));
                 return tipo;
             }
         } catch (SQLException e) {
@@ -109,7 +109,7 @@ public class OpTipoDocumento {
             while (rs.next()) {
                 TipoDocumento tipo = new TipoDocumento();
                 tipo.setIdtipo(rs.getInt("idtipo"));
-                tipo.setTipo_identifiacion(rs.getString("tipo_identificacion"));
+                tipo.setTipo_identificacion(rs.getString("tipo_identificacion"));
                 tipo.setObservaciones(rs.getString("observaciones"));
                 Lista.add(tipo);
             }
