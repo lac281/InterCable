@@ -12,7 +12,7 @@ package Modelos;
 public class TipoDocumento {
 
     private int idtipo;
-    private String tipo_identifiacion;
+    private String tipo_identificacion;
     private String observaciones;
 
     public TipoDocumento() {
@@ -20,7 +20,7 @@ public class TipoDocumento {
     }
 
     public TipoDocumento(String tipo_identifiacion, String observaciones) {
-        this.tipo_identifiacion = tipo_identifiacion;
+        this.tipo_identificacion = tipo_identifiacion;
         this.observaciones = observaciones;
     }
 
@@ -33,11 +33,11 @@ public class TipoDocumento {
     }
 
     public String getTipo_identifiacion() {
-        return tipo_identifiacion;
+        return tipo_identificacion;
     }
 
     public void setTipo_identifiacion(String tipo_identifiacion) {
-        this.tipo_identifiacion = tipo_identifiacion;
+        this.tipo_identificacion = tipo_identifiacion;
     }
 
     public String getObservaciones() {

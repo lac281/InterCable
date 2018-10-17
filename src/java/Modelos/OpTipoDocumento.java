@@ -113,11 +113,12 @@ public class OpTipoDocumento {
                 tipo.setObservaciones(rs.getString("observaciones"));
                 Lista.add(tipo);
             }
-            return Lista;
+
         } catch (SQLException e) {
+            Lista = null;
             System.out.println("Excepcion: " + e.getMessage());
         }
-        return null;
+        return Lista;
     }// Fin Clase listar
 
 }

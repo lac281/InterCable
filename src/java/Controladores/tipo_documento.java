@@ -7,8 +7,13 @@ package Controladores;
 
 import Modelos.OpTipoDocumento;
 import Modelos.TipoDocumento;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -40,27 +45,57 @@ public class tipo_documento extends HttpServlet {
 
         String tipo = request.getParameter("tipoDoc");
         String Obs = request.getParameter("Obser");
+        String Oper = request.getParameter("Operacion");
         resp = response.getOutputStream();
-        if (tipo.equals("") || Obs.equals("")) {
-            resp.print("Error: Debe de llenar cada uno de los campos");
-        } else {
 
-            Doc.setTipo_identifiacion(tipo);
-            Doc.setObservaciones(Obs);
-            boolean res_ = OpTipo.ingreso(Doc);
-            if (!res_) {
-                resp.print("Ocurrio un error con el ingreso de los datos, Intente nuevamente!");
+        switch (Oper) {
+            case "Ingreso":
+                if (tipo.equals("") || Obs.equals("")) {
+                    resp.print("Error: Debe de llenar cada uno de los campos");
+                } else {
 
-            } else {
-                resp.print("Registro Ingresado Correctamente!");
+                    Doc.setTipo_identifiacion(tipo);
+                    Doc.setObservaciones(Obs);
+                    boolean res_ = OpTipo.ingreso(Doc);
+                    if (!res_) {
+                        resp.print("Ocurrio un error con el ingreso de los datos, Intente nuevamente!");
 
-            }
+                    } else {
+                        resp.print("Registro Ingresado Correctamente!");
 
-            //resp.print(tipo.toString() + "    " + Obs.toString());
+                    }
+
+                    //resp.print(tipo.toString() + "    " + Obs.toString());
+                }
+                break;
+
+            case "Listar":
+                ArrayList<TipoDocumento> Listtipo = new ArrayList();
+                Listtipo = OpTipo.listarTipos();
+                Gson gson = new GsonBuilder().create();
+                JsonArray JArray = gson.toJsonTree(Listtipo).getAsJsonArray();
+                JsonObject jsonOb = new JsonObject();
+                jsonOb.add("Documento", JArray);
+
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                try {
+                    out.println(jsonOb);
+
+                } finally {
+                    out.close();
+                }
+                break;
+
+            case "Modificar":
+                break;
+
+            default:
+                break;
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

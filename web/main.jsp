@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -247,11 +248,62 @@
                                     <tbody>
 
                                     </tbody>
+                                    <tfoot>
 
+                                    </tfoot>
                                 </table>
                             </div>
                             <div id="ListEmpleado" style="display:none;">
                                 <h2>Listado de Empleados</h2>
+                                <table class="tbl_listaEmp">
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div id="ingresoEmpleado" style="display: none;">
+                                <h2>Ingreso Nuevo Empleado</h2>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <label for="">Identifiaci&oacute;n</label>
+                                        <input type="text" class="form-control" id="txt_identificacion">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label for="">Tipo de Iden</label>
+                                        <select name="txt_tipoiden" class="form-control" id="txt_tipoiden">
+
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="">NIT</label>
+                                        <input type="text" class="form-control" id="txt_nit">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="">Tel&eacute;fono</label>
+                                        <input type="text" class="form-control" id="txt_telefono">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label for="">Nombres</label>
+                                        <input type="text" class="form-control" id="txt_nombre">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="">Apellidos</label>
+                                        <input type="text" class="form-control" id="txt_apellido">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="">Direcci&oacute;n</label>
+                                        <input type="text" class="form-control" id="txt_direccion">
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -261,6 +313,8 @@
 
                 </div>
                 <!-- /.row -->
+
+
             </div>
             <!-- /#page-wrapper -->
 
@@ -389,7 +443,8 @@
                                 var obs = $('#obser').val();
                                 $.post('documento.do', {
                                     tipoDoc: tipo,
-                                    Obser: obs
+                                    Obser: obs,
+                                    Operacion: 'Ingreso'
                                 }, function(data) {
                                     alert(data);
                                     window.location.href = "main.jsp";
@@ -451,6 +506,28 @@
                             function listadoEmpleado() {
                                 $('#tipoEmpleado').hide();
                                 $('#ListEmpleado').show();
+                            }
+
+                            function ingresoEmpleado() {
+                                $('#tipoEmpleado').hide();
+                                $('#ListEmpleado').hide();
+                                $.post('documento.do', {
+                                    tipoDoc: '',
+                                    Obser: '',
+                                    Operacion: 'Listar'
+                                }, function(data) {
+                                    //var ob = JSON.parse(data);
+                                    alert(data);
+                                    /*var x = Object.keys(result.TipoEmpleado).length;
+                                     var select = "";
+                                     for (var i = 0; i < x; i++) {
+                                     var newSelect = "<option value='" + ob.Documento[i].idtipo + "'>" + ob.Documento[i].tipo_identificacion + "</option>";
+                                     select = select + newSelect;
+                                     }
+                                     $('#txt_tipoiden').append(select);*/
+                                    //$('#ingresoEmpleado').show();
+                                });
+
                             }
 
         </script>
