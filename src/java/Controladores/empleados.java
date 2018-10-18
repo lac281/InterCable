@@ -58,7 +58,7 @@ public class empleados extends HttpServlet {
 
         switch (Oper) {
             case "Ingreso":
-                emp = null;
+
                 emp.setIdentificacion_empleado(Ident);
                 emp.setTipo_empleado(Integer.parseInt(tipoId));
                 emp.setNit_empleado(Nit);

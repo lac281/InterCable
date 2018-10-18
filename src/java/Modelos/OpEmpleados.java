@@ -24,30 +24,25 @@ public class OpEmpleados {
         boolean res = false;
         PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement("INSERT INTO intercabledb.empleados ("
-                    + "codigo_empleado,identifacacion,nit_empleado,nombre_empleado,apellido_empleado,"
-                    + "direccion_empleado,telefono_empleado,tipo_identificacion,tipo_empleado,fecha_nac,"
-                    + "fecha_ingreso,igss,irtra,tipo_sangre,contacto_emergencia,telefonos_emergencia,"
-                    + "salario,bonificaion,descuento_igss) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, emp.getCodigo_empleado());
-            ps.setString(2, emp.getIdentificacion_empleado());
-            ps.setString(3, emp.getNit_empleado());
-            ps.setString(4, emp.getNombre_empleado());
-            ps.setString(5, emp.getApellido_empleado());
-            ps.setString(6, emp.getDireccion_empleado());
-            ps.setString(7, emp.getTelefono_empleado());
-            ps.setInt(8, emp.getTipo_identificacion());
-            ps.setInt(9, emp.getTipo_empleado());
-            ps.setDate(10, emp.getFecha_nac());
-            ps.setDate(11, emp.getFecha_ingreso());
-            ps.setString(12, emp.getIgss());
-            ps.setString(13, emp.getIrtra());
-            ps.setString(14, emp.getTipo_sangre());
-            ps.setString(15, emp.getContacto_emergencia());
-            ps.setString(16, emp.getTelefono_emergencia());
-            ps.setDouble(17, emp.getSalario());
-            ps.setDouble(18, emp.getBonificacion());
-            ps.setDouble(19, 0.0483);
+            ps = con.prepareStatement("SELECT intercabledb.ingreso_empleados(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+            ps.setString(1, emp.getIdentificacion_empleado());
+            ps.setString(2, emp.getNit_empleado());
+            ps.setString(3, emp.getNombre_empleado());
+            ps.setString(4, emp.getApellido_empleado());
+            ps.setString(5, emp.getDireccion_empleado());
+            ps.setString(6, emp.getTelefono_empleado());
+            ps.setInt(7, emp.getTipo_identificacion());
+            ps.setInt(8, emp.getTipo_empleado());
+            ps.setDate(9, emp.getFecha_nac());
+            ps.setString(10, emp.getIgss());
+            ps.setString(11, emp.getIrtra());
+            ps.setString(12, emp.getTipo_sangre());
+            ps.setString(13, emp.getContacto_emergencia());
+            ps.setString(14, emp.getTelefono_emergencia());
+            ps.setDouble(15, emp.getSalario());
+            ps.setDouble(16, emp.getBonificacion());
+
             int res_ = ps.executeUpdate();
             if (res_ == 0) {
                 res = false;

@@ -271,7 +271,7 @@
                             <div id="ingresoEmpleado" style="display: none;">
                                 <h2>Ingreso Nuevo Empleado</h2>
                                 <div class="form-group">
-                                    <form action="empleado.do"  id="form_empleado">
+                                    <form id="form_empleado">
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <label for="">Identifiaci&oacute;n</label>
