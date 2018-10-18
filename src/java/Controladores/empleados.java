@@ -5,9 +5,13 @@
  */
 package Controladores;
 
+import Modelos.Empleados;
+import Modelos.OpEmpleados;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,11 +31,62 @@ public class empleados extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    Empleados emp = new Empleados();
+    OpEmpleados OpEmp = new OpEmpleados();
+    private ServletOutputStream resp;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String Oper = request.getParameter("Operacion");
-        String codigo = request.getParameter("codigo");
+        String Ident = request.getParameter("txt_identificacion");
+        String tipoId = request.getParameter("txt_tipoiden");
+        String Nit = request.getParameter("txt_nit");
+        String Telefono = request.getParameter("txt_telefono");
+        String Nombre = request.getParameter("txt_nombre");
+        String Apellido = request.getParameter("txt_apellido");
+        String Direccion = request.getParameter("txt_direccion");
+        String tipoEmpleado = request.getParameter("txt_tipoempleado");
+        String fechaNac = request.getParameter("txt_fechanac");
+        String Igss = request.getParameter("txt_igss");
+        String Irtra = request.getParameter("txt_irtra");
+        String TipoSangre = request.getParameter("txt_tiposangre");
+        String Salario = request.getParameter("txt_salario");
+        String Bonificacion = request.getParameter("txt_bonificacion");
+        String Contacto = request.getParameter("txt_contacto");
+        String telContacto = request.getParameter("txt_telcontacto");
+
+        switch (Oper) {
+            case "Ingreso":
+                emp = null;
+                emp.setIdentificacion_empleado(Ident);
+                emp.setTipo_empleado(Integer.parseInt(tipoId));
+                emp.setNit_empleado(Nit);
+                emp.setTelefono_empleado(Telefono);
+                emp.setNombre_empleado(Nombre);
+                emp.setApellido_empleado(Apellido);
+                emp.setDireccion_empleado(Direccion);
+                emp.setTipo_empleado(Integer.parseInt(tipoEmpleado));
+                emp.setFecha_nac(Date.valueOf(fechaNac));
+                emp.setIgss(Igss);
+                emp.setIrtra(Irtra);
+                emp.setTipo_sangre(TipoSangre);
+                emp.setSalario(Double.parseDouble(Salario));
+                emp.setBonificacion(Double.parseDouble(Bonificacion));
+                emp.setContacto_emergencia(Contacto);
+                emp.setTelefono_emergencia(telContacto);
+                boolean res = OpEmp.Ingreso(emp);
+                if (!res) {
+                    resp.print("Error: Los Datos no se lograron guardar, Intente de Nuevo!");
+                } else {
+                    resp.print("Registro guardado Exitosamente");
+                }
+                break;
+            case "Listar":
+                break;
+            default:
+                break;
+        }
 
     }
 

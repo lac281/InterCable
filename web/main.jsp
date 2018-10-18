@@ -548,12 +548,9 @@
                                                 '<td>' + result.TipoEmpleado[i].observaciones + '</td>' +
                                                 '<td><button class="btn btn-warning" type="button" onclick="editarTipo(' +
                                                 result.TipoEmpleado[i].idtipo + ')">Editar</button></td></tr>';
-
                                         tabla = tabla + tablaHtml;
-
                                     }
                                     $('#tbl_tipoEmp tbody').html(tabla);
-
                                 });
                                 $('#ListEmpleado').hide();
                                 $('#ingresoEmpleado').hide();
@@ -587,7 +584,6 @@
                                     }
                                     $('#txt_tipoiden').html(select);
                                 });
-
                                 $.post('roll.do', {
                                     tipoEmp: '',
                                     tipoRol: '',
@@ -604,14 +600,16 @@
                                     $('#txt_tipoempleado').html(select);
                                 });
                                 $('#ingresoEmpleado').show();
-
                             }
 
                             function guardaEmpleado() {
-                                $.post('empleado.do', {
-                                    $('#form_empleado').serialize(),
-                                }, function(data) {
-                                    alert(data);
+                                $.ajax({
+                                    url: 'empleado.do',
+                                    data: $('#form_empleado').serialize(),
+                                    type: 'POST',
+                                    success: function(data) {
+                                        alert(data);
+                                    }
                                 });
                             }
 
