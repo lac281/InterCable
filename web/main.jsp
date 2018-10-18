@@ -505,7 +505,7 @@
                                     tipoDoc: tipo,
                                     Obser: obs,
                                     Operacion: 'Ingreso'
-                                }, function (data) {
+                                }, function(data) {
                                     alert(data);
                                     window.location.href = "main.jsp";
                                 });
@@ -524,7 +524,7 @@
                                     tipoRol: tipR,
                                     Obser: obEm,
                                     Operacion: 'Ingreso'
-                                }, function (data) {
+                                }, function(data) {
                                     alert(data);
                                     window.location.href = "main.jsp";
                                 }
@@ -538,7 +538,7 @@
                                     tipoRol: '',
                                     Obser: '',
                                     Operacion: 'Listar'
-                                }, function (data) {
+                                }, function(data) {
                                     var result = JSON.parse(data);
                                     var x = Object.keys(result.TipoEmpleado).length;
                                     for (var i = 0; i < x; i++) {
@@ -577,7 +577,7 @@
                                     tipoDoc: '',
                                     Obser: '',
                                     Operacion: 'Listar'
-                                }, function (data) {
+                                }, function(data) {
                                     var ob = JSON.parse(data);
                                     var x = Object.keys(ob.Documento).length;
                                     var select = "";
@@ -586,8 +586,6 @@
                                         select = select + newSelect;
                                     }
                                     $('#txt_tipoiden').html(select);
-
-
                                 });
 
                                 $.post('roll.do', {
@@ -595,7 +593,7 @@
                                     tipoRol: '',
                                     Obser: '',
                                     Operacion: 'Listar'
-                                }, function (typ) {
+                                }, function(typ) {
                                     var obj = JSON.parse(typ);
                                     var z = Object.keys(obj.TipoEmpleado).length;
                                     var select = "";
@@ -610,7 +608,11 @@
                             }
 
                             function guardaEmpleado() {
-                                
+                                $.post('empleado.do', {
+                                    $('#form_empleado').serialize(),
+                                }, function(data) {
+                                    alert(data);
+                                });
                             }
 
         </script>

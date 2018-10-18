@@ -29,10 +29,10 @@ public class empleados extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        String Oper = request.getParameter("Operacion");
         String codigo = request.getParameter("codigo");
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
